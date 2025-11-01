@@ -1,14 +1,14 @@
 {
-  "name": "vscode-graphite-colors-theme",
-  "displayName": "graphite-colors",
-  "description": "",
+  "name": "vscode-bnw-colors-theme",
+  "displayName": "bnw-colors",
+  "description": "VSCode mixed theme with subtle syntax color to stay focused.",
   "version": "0.0.8",
   "engines": {
     "vscode": "^1.85.0"
   },
   "publisher": "blaccorek",
   "repository": {
-    "url": "https://github.com/blaccorek/vscode-graphite-colors-theme"
+    "url": "https://github.com/blaccorek/vscode-bnw-colors-theme"
   },
   "categories": [
     "Themes"
@@ -16,9 +16,9 @@
   "contributes": {
     "themes": [
       {
-        "label": "graphite",
+        "label": "black and white colors",
         "uiTheme": "vs-dark",
-        "path": "./themes/graphite-color-theme.json"
+        "path": "./themes/bnw-color-theme.json"
       }
     ]
   }

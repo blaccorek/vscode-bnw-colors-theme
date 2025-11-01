@@ -55,7 +55,7 @@
 		"editor.wordHighlightBackground": "#11111111",
 		"editorLineNumber.activeForeground": "#000000",
 		"editor.findMatchBackground": "#3fcc8599",
-		"editor.findMatchHighlightBackground": "#536b7833",
+		"editor.findMatchHighlightBackground": "#96cdb299",
 		"editorIndentGuide.background1": "#99999922",
 		"editorIndentGuide.activeBackground1": "#00000033",
 		"peekViewEditor.background": "#ffffff",
