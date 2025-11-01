@@ -63,10 +63,10 @@
 		"editorCursor.foreground": "#52b788",
 		// -- bracket
 		"editorBracketHighlight.foreground1": "#000000",
-		"editorBracketHighlight.foreground2": "#333333",
-		"editorBracketHighlight.foreground3": "#666666",
-		"editorBracketHighlight.foreground4": "#999999",
-		"editorBracketHighlight.foreground5": "#BBBBBB",
+		"editorBracketHighlight.foreground2": "#222222",
+		"editorBracketHighlight.foreground3": "#555555",
+		"editorBracketHighlight.foreground4": "#777777",
+		"editorBracketHighlight.foreground5": "#AAAAAA",
 		"editorBracketHighlight.foreground6": "#ff7d00",
 		"editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
 		"editorBracketMatch.background": "#00000000",
@@ -101,6 +101,7 @@
 		//-- button
 		"button.background": "#536b78",
 		"button.secondaryBackground": "#1C1C21",
+		//-- text link
 		"textLink.foreground": "#62929e",
 		"textLink.activeForeground": "#58a4b0",
 		"editorInfo.foreground": "#62929e",
@@ -139,7 +140,7 @@
 		},
 		
 		{
-			"name": "Types (Cool Gray)",
+			"name": "Types",
 			"scope": [
 				"entity.name.type",
 				"support.type",
@@ -147,7 +148,6 @@
 			],
 			"settings": {
 				"foreground": "#6C7A89",
-				"fontStyle": "bold"
 			}
 		},
 		{
@@ -340,17 +340,6 @@
 			}
 		},
 		{
-			"name": "Constants",
-			"scope": [
-				"constant",
-				"constant.language",
-				"constant.numeric"
-			],
-			"settings": {
-				"foreground": "#7A8A99"
-			}
-		},
-		{
 			"name": "Abstract Classes, Exposition Keywords",
 			"scope": [
 				"storage.type.class",
@@ -375,7 +364,7 @@
 			],
 			"settings": {
 				"foreground": "#A3B8C8",
-				"fontStyle": "italic"
+				"fontStyle": "bold italic"
 			}
 		},
 		{
@@ -428,7 +417,6 @@
 			],
 			"settings": {
 				"foreground": "#2B3A4B",
-				"fontStyle": "bold"
 			}
 		},
 		{
@@ -438,6 +426,7 @@
 				"meta.class.inheritance",
 				"entity.name.class",
 				"entity.name.type.class",
+				"entity.name.type.enum",
 				"entity.name.class",
 				"entity.name.type.interface",
 				"entity.other.inherited-class",
@@ -449,7 +438,6 @@
 			],
 			"settings": {
 				"foreground": "#181C22",
-				"fontStyle": "bold"	
 			}
 		},
 		{
@@ -519,6 +507,8 @@
 			"name": "Constants",
 			"scope": [
 				"constant",
+				"constant.language",
+				"constant.numeric",
 				"variable.other.constant",
 				"constant.other.symbol",
 				"constant.language.symbol",
@@ -527,7 +517,8 @@
 				"variable.other.enummember"
 			],
 			"settings": {
-				"foreground": "#7A8A99"
+				"foreground": "#7A8A99",
+				"fontStyle": "bold"
 			}
 		},
 		{
@@ -864,7 +855,7 @@
 			}
 		},
 		{
-			"name": "Variables (Subtle)",
+			"name": "Variables",
 			"scope": [
 				"variable",
 				"variable.other",
@@ -876,7 +867,6 @@
 			],
 			"settings": {
 				"foreground": "#5A5F66",
-				"fontStyle": "bold"
 			}
 		},
 		{

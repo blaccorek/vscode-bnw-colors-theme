@@ -2,7 +2,7 @@
   "name": "vscode-graphite-colors-theme",
   "displayName": "graphite-colors",
   "description": "",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "engines": {
     "vscode": "^1.85.0"
   },
