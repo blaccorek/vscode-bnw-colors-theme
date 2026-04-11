@@ -2,7 +2,7 @@
   "name": "vscode-bnw-colors-theme",
   "displayName": "bnw-colors",
   "description": "VSCode mixed theme with subtle syntax color to stay focused.",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "engines": {
     "vscode": "^1.85.0"
   },
