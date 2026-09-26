@@ -22,4 +22,4 @@ Search for **bnw-colors** in the Extensions view, then pick
 
 ## Screenshots
 
-![java-colors](docs/java.png)
+![java-colors](docs/images/java.png)
