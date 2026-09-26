@@ -42,3 +42,5 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Color Terraform heredocs and ${} interpolation
 - Improve file tab display
 - Make YAML anchors (&name), aliases (*name) and merge keys (<<) stand out
+- Make INI and TOML section titles pop
+- Keep INI/TOML section brackets themed by disabling bracket pair colorization there

@@ -1045,6 +1045,38 @@
 			}
 		},
 		{
+			"name": "INI/TOML: section titles share Terraform's declaration green, so [section] headers pop",
+			"scope": [
+				"entity.name.section.group-title.ini",
+				"entity.name.section.ini",
+				"entity.name.section.toml",
+				"entity.other.attribute-name.table.toml",
+				"entity.other.attribute-name.table.array.toml",
+				"support.type.property-name.table.toml",
+				"support.type.property-name.array.toml"
+			],
+			"settings": {
+				"foreground": "#14663F",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "INI/TOML: section brackets [ ] and dotted table paths stay neutral, so only the title pops",
+			"scope": [
+				"punctuation.definition.entity.ini",
+				"punctuation.definition.table.toml",
+				"punctuation.definition.array.table.toml",
+				"punctuation.definition.table.array.toml",
+				"punctuation.definition.section.toml",
+				"meta.table.toml punctuation.separator.dot.toml",
+				"meta.array.table.toml punctuation.separator.dot.toml"
+			],
+			"settings": {
+				"foreground": "#111111",
+				"fontStyle": "bold"
+			}
+		},
+		{
 			"name": "Terraform: live code inside ${ } reads as code, not as text",
 			"scope": [
 				"meta.interpolation.hcl variable.other.readwrite.terraform",
