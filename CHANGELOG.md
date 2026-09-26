@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to the "graphite" extension will be documented in this file.
+All notable changes to the "bnw" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
@@ -27,3 +27,17 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.5]
 - Improve github colpilot contrast
 - Change colors to better fit name
+
+## [0.0.8]
+- Improve contrast and highlighting for Rust
+- Remove duplicate token rules
+- Add contrast to brackets
+
+## [0.0.9]
+- Rename extension to bnw-colors
+- Fix display issue on github copilot tips
+
+## [0.0.10]
+- Highlight Terraform block types (resource, data, module, output...)
+- Color Terraform heredocs and ${} interpolation
+- Improve file tab display
