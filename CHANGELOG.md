@@ -44,3 +44,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Make YAML anchors (&name), aliases (*name) and merge keys (<<) stand out
 - Make INI and TOML section titles pop
 - Keep INI/TOML section brackets themed by disabling bracket pair colorization there
+- Make Dockerfile instructions (FROM, ARG, ENV, RUN...) pop in the storage-keyword blue

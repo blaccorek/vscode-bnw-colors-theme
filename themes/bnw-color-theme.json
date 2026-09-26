@@ -1077,6 +1077,18 @@
 			}
 		},
 		{
+			"name": "Dockerfile: reserved instructions (FROM, ARG, ENV, RUN, AS...) share the storage-keyword blue, so build steps pop",
+			"scope": [
+				"keyword.other.special-method.dockerfile",
+				"keyword.control.dockerfile",
+				"keyword.operator.dockerfile"
+			],
+			"settings": {
+				"foreground": "#5A6A8A",
+				"fontStyle": "bold"
+			}
+		},
+		{
 			"name": "Terraform: live code inside ${ } reads as code, not as text",
 			"scope": [
 				"meta.interpolation.hcl variable.other.readwrite.terraform",
