@@ -79,6 +79,12 @@
 		"peekViewEditor.background": "#ffffff",
 		"editorLink.activeForeground": "#58a4b0",
 		"editorCursor.foreground": "#52b788",
+		// -- sticky scroll
+		"editorStickyScroll.background": "#F5F5F5",
+		"editorStickyScrollGutter.background": "#F5F5F5",
+		"editorStickyScrollHover.background": "#DEE2E6",
+		"editorStickyScroll.border": "#CED4DA",
+		"editorStickyScroll.shadow": "#00000022",
 		// -- bracket
 		"editorBracketHighlight.foreground1": "#000000",
 		"editorBracketHighlight.foreground2": "#222222",
