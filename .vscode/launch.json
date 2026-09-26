@@ -6,10 +6,34 @@
 	"version": "0.2.0",
     "configurations": [
         {
+            // Opens this project in the Extension Development Host.
+            //
+            // Two WSL/VS Code constraints shape the args below:
+            //  1. In a WSL remote session the target must be passed as a
+            //     vscode-remote:// URI. A plain path is resolved by the Windows
+            //     client, fails, and the window comes up empty.
+            //  2. VS Code allows a folder in only one window at a time. Pointing
+            //     at the project folder itself is deduped against the window you
+            //     are already working in, which is the other way to get an empty
+            //     dev window. bnw-dev.code-workspace wraps the same folder under
+            //     a distinct window identity, so it opens alongside.
             "name": "Extension",
             "type": "extensionHost",
             "request": "launch",
             "args": [
+                "--file-uri=vscode-remote://wsl+Ubuntu${workspaceFolder}/.vscode/bnw-dev.code-workspace",
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ]
+        },
+        {
+            // Opens just samples/ - a plain subfolder, so no workspace file and
+            // no dedupe to worry about. Handy when you only want to eyeball
+            // syntax colors across languages.
+            "name": "Extension (samples)",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--folder-uri=vscode-remote://wsl+Ubuntu${workspaceFolder}/samples",
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ]
         }
