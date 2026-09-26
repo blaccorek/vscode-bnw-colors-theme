@@ -2,12 +2,13 @@
   "name": "vscode-bnw-colors-theme",
   "displayName": "bnw-colors",
   "description": "VSCode mixed theme with subtle syntax color to stay focused.",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "engines": {
     "vscode": "^1.85.0"
   },
   "publisher": "blaccorek",
   "repository": {
+    "type": "git",
     "url": "https://github.com/blaccorek/vscode-bnw-colors-theme"
   },
   "categories": [
