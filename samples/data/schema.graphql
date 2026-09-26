@@ -1,0 +1,97 @@
+# Sample GraphQL SDL: types, interfaces, unions, enums, inputs, directives.
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+directive @auth(requires: Role = VIEWER) on FIELD_DEFINITION | OBJECT
+directive @deprecated(reason: String = "No longer supported") on FIELD_DEFINITION | ENUM_VALUE
+
+scalar DateTime
+scalar JSON
+
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+interface Node {
+  id: ID!
+  createdAt: DateTime!
+}
+
+type User implements Node @auth(requires: VIEWER) {
+  id: ID!
+  createdAt: DateTime!
+  name: String!
+  email: String
+  roles: [Role!]!
+  metadata: JSON
+  orders(first: Int = 10, after: String, status: OrderStatus): OrderConnection!
+  legacyHandle: String @deprecated(reason: "Use name instead")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  CANCELLED
+}
+
+type Order implements Node {
+  id: ID!
+  createdAt: DateTime!
+  totalCents: Int!
+  currency: String!
+  status: OrderStatus!
+  owner: User!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type OrderEdge {
+  cursor: String!
+  node: Order!
+}
+
+type OrderConnection {
+  edges: [OrderEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String
+  roles: [Role!] = [VIEWER]
+}
+
+type ValidationError {
+  field: String!
+  message: String!
+}
+
+union CreateUserResult = User | ValidationError
+
+type Query {
+  me: User @auth
+  user(id: ID!): User
+  users(search: String, first: Int = 25, after: String): [User!]!
+  search(term: String!): [Node!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): CreateUserResult!
+  deleteUser(id: ID!): Boolean! @auth(requires: ADMIN)
+}
+
+type Subscription {
+  orderPlaced(userId: ID): Order!
+}

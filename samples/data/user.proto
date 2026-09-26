@@ -1,0 +1,63 @@
+// Sample Protocol Buffers definition.
+syntax = "proto3";
+
+package bnw.users.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+
+option go_package = "github.com/blaccorek/api/gen/users/v1;usersv1";
+option java_multiple_files = true;
+option java_package = "io.bnw.users.v1";
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_ADMIN = 1;
+  ROLE_EDITOR = 2;
+  ROLE_VIEWER = 3;
+}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+  optional string email = 3;
+  repeated Role roles = 4;
+  map<string, string> metadata = 5;
+  google.protobuf.Timestamp created_at = 6;
+  reserved 7, 9 to 11;
+  reserved "legacy_handle";
+
+  oneof contact {
+    string phone = 12;
+    string address = 13;
+  }
+}
+
+message GetUserRequest {
+  int64 id = 1;
+}
+
+message ListUsersRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  string filter = 3;
+  string order_by = 4;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+  string next_page_token = 2;
+  int32 total_size = 3;
+}
+
+message UpdateUserRequest {
+  User user = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (User);
+  rpc WatchUsers(ListUsersRequest) returns (stream User);
+}

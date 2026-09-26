@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@blaccorek/api",
+  "version": "1.4.2",
+  "private": false,
+  "description": "Sample JSON file covering objects, arrays, numbers and escapes.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint \"src/**/*.ts\" --max-warnings 0",
+    "test": "vitest run --coverage",
+    "start": "node --enable-source-maps dist/server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "pino": "~8.19.0",
+    "zod": "3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0"
+  },
+  "config": {
+    "port": 8080,
+    "timeoutSeconds": 5.5,
+    "maxBodyBytes": 16777216,
+    "ratio": 1.0e-3,
+    "negative": -42,
+    "enabled": true,
+    "disabled": false,
+    "nothing": null,
+    "escaped": "line\nbreak \"quoted\" tab\there \\ backslash é",
+    "matrix": [
+      [1, 2, 3],
+      [4, 5, 6]
+    ],
+    "nested": {
+      "deep": {
+        "deeper": {
+          "value": []
+        }
+      }
+    }
+  },
+  "keywords": ["theme", "vscode", "samples", "syntax-highlighting"]
+}

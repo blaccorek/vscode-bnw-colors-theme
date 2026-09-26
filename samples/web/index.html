@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bnw-colors &mdash; sample page</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .hero {
+        padding: 2rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page header -->
+    <header class="hero" id="top">
+      <h1>Hello, <em>world</em></h1>
+      <p>Subtle syntax colors &amp; high contrast &#8212; nothing more.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="features">
+        <h2 id="features">Features</h2>
+        <ul class="card">
+          <li data-index="1">Dark UI, light editor</li>
+          <li data-index="2">Semantic highlighting</li>
+          <li data-index="3">Language samples</li>
+        </ul>
+      </section>
+
+      <form action="/subscribe" method="post" novalidate>
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <select name="plan">
+          <option value="free" selected>Free</option>
+          <option value="pro">Pro</option>
+        </select>
+        <textarea name="notes" rows="3" cols="40">Optional notes…</textarea>
+        <button type="submit" disabled>Subscribe</button>
+      </form>
+
+      <table>
+        <caption>Token coverage</caption>
+        <thead>
+          <tr><th scope="col">Language</th><th scope="col">Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>TypeScript</td><td>&check;</td></tr>
+          <tr><td>Terraform</td><td>&check;</td></tr>
+        </tbody>
+      </table>
+
+      <figure>
+        <img src="../../docs/java.png" alt="Java sample screenshot" width="640" height="360" loading="lazy" />
+        <figcaption>Screenshot</figcaption>
+      </figure>
+    </main>
+
+    <footer>
+      <small>&copy; 2026 blaccorek</small>
+    </footer>
+
+    <script type="module">
+      import ApiClient from "./main.js";
+
+      const client = new ApiClient();
+      document.querySelector("form")?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        await client.request("/subscribe", { method: "POST", body: Object.fromEntries(data) });
+      });
+    </script>
+  </body>
+</html>

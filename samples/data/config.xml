@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample XML: namespaces, attributes, CDATA, entities, processing instructions. -->
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<!DOCTYPE configuration SYSTEM "config.dtd">
+<configuration xmlns="urn:bnw:config:1.0"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:sec="urn:bnw:security:1.0"
+               xsi:schemaLocation="urn:bnw:config:1.0 config.xsd"
+               version="1.4.2">
+
+  <metadata>
+    <name>bnw-colors sample</name>
+    <description><![CDATA[Contains <markup> & "special" characters that are not parsed.]]></description>
+    <updated>2026-09-26T08:30:00Z</updated>
+    <owner email="dev@example.com">blaccorek &amp; contributors</owner>
+  </metadata>
+
+  <server host="0.0.0.0" port="8080" workers="4">
+    <tls enabled="true">
+      <certificate>/etc/ssl/certs/api.crt</certificate>
+      <privateKey>/etc/ssl/private/api.key</privateKey>
+      <protocols>
+        <protocol>TLSv1.2</protocol>
+        <protocol>TLSv1.3</protocol>
+      </protocols>
+    </tls>
+    <timeouts read="5s" write="10s" idle="65s"/>
+  </server>
+
+  <sec:authentication provider="oidc">
+    <sec:issuer>https://auth.example.com/realms/bnw</sec:issuer>
+    <sec:audience>api</sec:audience>
+    <sec:roles>
+      <sec:role name="admin" privileged="true"/>
+      <sec:role name="editor"/>
+      <sec:role name="viewer"/>
+    </sec:roles>
+  </sec:authentication>
+
+  <logging level="info" format="json">
+    <sink type="stdout"/>
+    <sink type="file" path="/var/log/api/app.log" rotate="daily" keep="7"/>
+  </logging>
+
+  <features>
+    <feature key="tracing" value="false"/>
+    <feature key="async_writes" value="true"/>
+  </features>
+
+  <environments>
+    <environment name="staging" replicas="2" region="eu-west-3"/>
+    <environment name="prod" replicas="6" region="eu-west-1"/>
+  </environments>
+</configuration>

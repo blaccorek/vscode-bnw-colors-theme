@@ -1,0 +1,136 @@
+# Sample Kubernetes manifests: anchors, multi-doc, block scalars, probes.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+  namespace: bnw
+  labels:
+    app.kubernetes.io/name: api
+    app.kubernetes.io/part-of: bnw-colors
+    app.kubernetes.io/managed-by: kustomize
+data:
+  LOG_LEVEL: "info"
+  MAX_RETRIES: "3"
+  TIMEOUT_SECONDS: "5"
+  nginx.conf: |
+    server {
+      listen 8080;
+      location /healthz { return 200 'ok'; }
+    }
+  motd: >-
+    Multi-line folded text that becomes
+    a single line with spaces.
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: bnw
+  labels: &labels
+    app.kubernetes.io/name: api
+    app.kubernetes.io/part-of: bnw-colors
+    app.kubernetes.io/managed-by: kustomize
+  annotations:
+    kubectl.kubernetes.io/default-container: api
+    prometheus.io/scrape: "true"
+spec:
+  replicas: 3
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: api
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      serviceAccountName: api
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: api
+      containers:
+        - name: api
+          image: ghcr.io/blaccorek/api:1.4.2@sha256:0f1e2d3c4b5a69788796a5b4c3d2e1f00112233445566778899aabbccddeeff0
+          imagePullPolicy: IfNotPresent
+          args: ["--config=/etc/api/config.yaml", "--verbose"]
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: api-config
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: api-secrets
+                  key: database-url
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits: { cpu: "1", memory: 512Mi }
+          livenessProbe:
+            httpGet: { path: /healthz, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3
+          readinessProbe:
+            httpGet: { path: /readyz, port: http }
+            periodSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /etc/api
+              readOnly: true
+            - { name: tmp, mountPath: /tmp }
+      volumes:
+        - name: config
+          configMap:
+            name: api-config
+        - name: tmp
+          emptyDir: {}
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - key: workload
+          operator: Equal
+          value: general
+          effect: NoSchedule
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api
+  namespace: bnw
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  minReplicas: 3
+  maxReplicas: 12
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

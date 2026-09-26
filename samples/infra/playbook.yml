@@ -1,0 +1,102 @@
+# Sample Ansible playbook: vars, handlers, loops, conditionals, Jinja2.
+- name: Provision application servers
+  hosts: app_servers
+  become: true
+  gather_facts: true
+  serial: "25%"
+  max_fail_percentage: 10
+
+  vars:
+    app_name: bnw-api
+    app_version: "1.4.2"
+    app_user: deploy
+    app_root: "/opt/{{ app_name }}"
+    packages:
+      - curl
+      - git
+      - jq
+      - unzip
+    feature_flags:
+      tracing: false
+      async_writes: true
+
+  vars_files:
+    - group_vars/secrets.yml
+
+  pre_tasks:
+    - name: Assert supported distribution
+      ansible.builtin.assert:
+        that:
+          - ansible_facts['os_family'] in ['Debian', 'RedHat']
+          - ansible_facts['distribution_major_version'] | int >= 11
+        fail_msg: "Unsupported OS: {{ ansible_facts['distribution'] }}"
+
+  handlers:
+    - name: Restart app
+      ansible.builtin.systemd:
+        name: "{{ app_name }}"
+        state: restarted
+        daemon_reload: true
+      listen: app changed
+
+  tasks:
+    - name: Install base packages
+      ansible.builtin.package:
+        name: "{{ packages }}"
+        state: present
+      retries: 3
+      delay: 5
+      register: pkg_result
+      until: pkg_result is succeeded
+
+    - name: Ensure service user exists
+      ansible.builtin.user:
+        name: "{{ app_user }}"
+        system: true
+        shell: /usr/sbin/nologin
+        home: "{{ app_root }}"
+        create_home: false
+
+    - name: Create directory layout
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+        mode: "{{ item.mode | default('0755') }}"
+      loop:
+        - { path: "{{ app_root }}" }
+        - { path: "{{ app_root }}/releases" }
+        - { path: "{{ app_root }}/shared", mode: "0750" }
+      loop_control:
+        label: "{{ item.path }}"
+
+    - name: Render configuration
+      ansible.builtin.template:
+        src: templates/app.conf.j2
+        dest: "{{ app_root }}/shared/app.conf"
+        owner: "{{ app_user }}"
+        mode: "0640"
+        validate: "/usr/bin/test -s %s"
+      notify: app changed
+
+    - name: Download release archive
+      ansible.builtin.get_url:
+        url: "https://releases.example.com/{{ app_name }}/{{ app_version }}.tar.gz"
+        dest: "/tmp/{{ app_name }}-{{ app_version }}.tar.gz"
+        checksum: "sha256:{{ release_checksum }}"
+        mode: "0644"
+      when: not ansible_check_mode
+      tags: [deploy]
+
+    - name: Enable tracing sidecar
+      ansible.builtin.include_tasks: tasks/tracing.yml
+      when: feature_flags.tracing | bool
+
+    - name: Report deployed hosts
+      ansible.builtin.debug:
+        msg: >-
+          {{ inventory_hostname }} now runs {{ app_name }} {{ app_version }}
+          ({{ ansible_facts['processor_vcpus'] }} vCPU,
+          {{ (ansible_facts['memtotal_mb'] / 1024) | round(1) }} GiB RAM)
+      changed_when: false

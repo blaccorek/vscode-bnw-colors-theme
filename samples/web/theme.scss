@@ -1,0 +1,76 @@
+// Sample SCSS: variables, maps, mixins, functions, nesting, control flow.
+@use "sass:map";
+@use "sass:math";
+
+$font-stack: "Inter", sans-serif !default;
+$radius: 6px;
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+);
+$palette: (
+  primary: #3fcc85,
+  danger: #a0001c,
+  muted: #6c757d,
+);
+
+@function color($name) {
+  @if not map.has-key($palette, $name) {
+    @error "Unknown color `#{$name}`.";
+  }
+  @return map.get($palette, $name);
+}
+
+@mixin respond-to($name) {
+  $width: map.get($breakpoints, $name);
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+%button-base {
+  display: inline-flex;
+  align-items: center;
+  gap: math.div($radius, 2);
+  border: 0;
+  border-radius: $radius;
+  cursor: pointer;
+}
+
+.btn {
+  @extend %button-base;
+  font-family: $font-stack;
+  padding: 0.5rem 1rem;
+
+  &--ghost {
+    background: transparent;
+    border: 1px solid color(muted);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @each $name, $value in $palette {
+    &--#{$name} {
+      background-color: $value;
+      color: if(lightness($value) > 60%, #131316, #ffffff);
+
+      &:hover {
+        background-color: darken($value, 6%);
+      }
+    }
+  }
+
+  @include respond-to("md") {
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+@for $i from 1 through 4 {
+  .mt-#{$i} {
+    margin-top: #{$i * 0.25}rem;
+  }
+}

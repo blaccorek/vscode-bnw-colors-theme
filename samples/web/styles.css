@@ -1,0 +1,87 @@
+/* Sample CSS: custom properties, nesting-free selectors, at-rules. */
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --color-bg: #f5f5f5;
+  --color-fg: #495057;
+  --color-accent: rgb(63 204 133 / 85%);
+  --radius: 0.375rem;
+  --space: clamp(0.5rem, 1vw + 0.25rem, 1.25rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #131316;
+    --color-fg: #e9ecef;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: var(--space);
+  font: 400 16px/1.6 var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: calc(var(--space) * 1.5);
+  border: 1px solid color-mix(in srgb, var(--color-fg) 20%, transparent);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-2px);
+}
+
+.card > .title::first-line {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a[href^="https://"]:not(.plain) {
+  color: var(--color-accent);
+  text-decoration: underline dotted 1px;
+}
+
+ul li:nth-child(2n + 1) {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.03) 100%);
+}
+
+@supports (backdrop-filter: blur(4px)) {
+  .modal {
+    backdrop-filter: blur(4px) saturate(120%);
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter.woff2") format("woff2");
+  font-display: swap;
+}

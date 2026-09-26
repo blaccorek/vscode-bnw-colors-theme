@@ -1,0 +1,60 @@
+# Sample TOML configuration.
+title = "bnw-colors sample config"
+version = "1.4.2"
+enabled = true
+max_retries = 3
+timeout = 5.0
+tags = ["theme", "vscode", "samples"]
+released_at = 2026-09-26T08:30:00Z
+
+[server]
+host = "0.0.0.0"
+port = 8080
+workers = 4
+keep_alive = "65s"
+allowed_origins = [
+  "https://example.com",
+  "https://api.example.com",
+]
+
+[server.tls]
+enabled = true
+cert = "/etc/ssl/certs/api.crt"
+key = "/etc/ssl/private/api.key"
+min_version = "1.2"
+
+[database]
+url = "postgres://api:secret@localhost:5432/api?sslmode=require"
+pool_size = 16
+statement_timeout_ms = 30_000
+
+[logging]
+level = "info"
+format = "json"
+sinks = ["stdout", "file"]
+
+[logging.file]
+path = '/var/log/api/app.log'
+rotate = "daily"
+keep = 7
+
+[features]
+tracing = false
+async_writes = true
+
+[[environments]]
+name = "staging"
+replicas = 2
+region = "eu-west-3"
+
+[[environments]]
+name = "prod"
+replicas = 6
+region = "eu-west-1"
+
+[metadata]
+description = """
+Multi-line basic string.
+Second line keeps its newline.
+"""
+regex = '''\d{4}-\d{2}-\d{2}'''
