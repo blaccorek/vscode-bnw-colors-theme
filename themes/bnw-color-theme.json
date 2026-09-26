@@ -975,6 +975,63 @@
 				"fontStyle": "italic"
 			}
 		},
+		{
+			"name": "Terraform: block type keywords (resource, data, module, output...)",
+			"scope": [
+				"entity.name.type.terraform"
+			],
+			"settings": {
+				"foreground": "#14663F",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Terraform: heredoc delimiters (<<-EOT ... EOT)",
+			"scope": [
+				"keyword.operator.heredoc.hcl",
+				"keyword.control.heredoc.hcl"
+			],
+			"settings": {
+				"foreground": "#6a3a00",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Terraform: heredoc body (warm grey, so embedded text reads apart from quoted strings)",
+			"scope": [
+				"string.unquoted.heredoc.hcl"
+			],
+			"settings": {
+				"foreground": "#77695C",
+				"fontStyle": ""
+			}
+		},
+		{
+			"name": "Terraform: interpolation delimiters ${ }",
+			"scope": [
+				"keyword.other.interpolation.begin.hcl",
+				"keyword.other.interpolation.end.hcl",
+				"keyword.operator.template.left.trim.hcl",
+				"keyword.operator.template.right.trim.hcl"
+			],
+			"settings": {
+				"foreground": "#A8551A",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Terraform: live code inside ${ } reads as code, not as text",
+			"scope": [
+				"meta.interpolation.hcl variable.other.readwrite.terraform",
+				"meta.interpolation.hcl variable.other.readwrite.hcl",
+				"meta.interpolation.hcl variable.other.member.hcl",
+				"meta.interpolation.hcl support.function.builtin.terraform"
+			],
+			"settings": {
+				"foreground": "#2F3A45",
+				"fontStyle": ""
+			}
+		},
 	],
 	"semanticTokenColors": {
 		"operator": "#6A6B70",

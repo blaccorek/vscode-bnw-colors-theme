@@ -190,3 +190,49 @@ output "bucket_arn" {
 output "subnet_map" {
   value = { for az, subnet in aws_subnet.private : az => subnet.cidr_block }
 }
+
+resource "aws_cloudwatch_log_group" "app" {
+  count = local.is_prod ? 2 : 1
+
+  name              = "/bnw/${var.environment}/app-${count.index}"
+  retention_in_days = local.is_prod ? 90 : 7
+}
+
+resource "aws_security_group" "app" {
+  name   = "${local.name_prefix}-app"
+  vpc_id = aws_vpc.main.id
+
+  dynamic "ingress" {
+    for_each = local.is_prod ? [443] : [80, 443, 8080]
+
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+resource "aws_ssm_parameter" "bootstrap" {
+  name = "${local.name_prefix}-bootstrap"
+  type = "String"
+
+  value = <<-EOT
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "cluster=${module.eks.cluster_name}" >> /etc/bnw.env
+  EOT
+}
+
+moved {
+  from = aws_s3_bucket.old_artifacts
+  to   = aws_s3_bucket.artifacts
+}
+
+check "bucket_versioning" {
+  assert {
+    condition     = !local.is_prod || aws_s3_bucket_versioning.artifacts.versioning_configuration[0].status == "Enabled"
+    error_message = "Versioning must be enabled in prod."
+  }
+}
