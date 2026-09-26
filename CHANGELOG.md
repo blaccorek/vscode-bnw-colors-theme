@@ -41,3 +41,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Highlight Terraform block types (resource, data, module, output...)
 - Color Terraform heredocs and ${} interpolation
 - Improve file tab display
+- Make YAML anchors (&name), aliases (*name) and merge keys (<<) stand out

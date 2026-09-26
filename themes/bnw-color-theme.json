@@ -1020,6 +1020,31 @@
 			}
 		},
 		{
+			"name": "YAML: anchor, alias and merge sigils (& * <<) mark indirection, like Terraform's ${ } delimiters",
+			"scope": [
+				"keyword.control.property.anchor.yaml",
+				"punctuation.definition.anchor.yaml",
+				"keyword.control.flow.alias.yaml",
+				"punctuation.definition.alias.yaml",
+				"keyword.operator.yaml"
+			],
+			"settings": {
+				"foreground": "#A8551A",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "YAML: anchor and alias names share Terraform's declaration green, so &name and *name link up at a glance",
+			"scope": [
+				"entity.name.type.anchor.yaml",
+				"variable.other.alias.yaml"
+			],
+			"settings": {
+				"foreground": "#14663F",
+				"fontStyle": "bold"
+			}
+		},
+		{
 			"name": "Terraform: live code inside ${ } reads as code, not as text",
 			"scope": [
 				"meta.interpolation.hcl variable.other.readwrite.terraform",
