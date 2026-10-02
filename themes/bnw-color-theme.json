@@ -1,47 +1,65 @@
 {
 	"name": "graphite",
 	"semanticHighlighting": true,
+	// ===========================================================================
+	// WORKBENCH
+	// Dark chrome (activity bar, side bar, tabs, panels) around a light editor
+	// surface. Greys run from #131316 (darkest chrome) to #F5F5F5 (editor).
+	// ===========================================================================
 	"colors": {
-		// Base colors
+		// --- Base & global ---
 		"focusBorder": "#495057",
 		"foreground": "#7D878F",
-		//replace
 		"disabledForeground": "#6C757D",
-		"widget.border": "#1C1C21",
-		"widget.shadow": "#131316",
-		"selection.background": "#000000",
 		"descriptionForeground": "#7C8791",
 		"errorForeground": "#D06767",
 		"icon.foreground": "#7C8791",
+		"selection.background": "#000000",
+		"widget.border": "#1C1C21",
+		"widget.shadow": "#131316",
 		"sash.hoverBorder": "#adb5bd",
-		// menubar
+
+		// --- Dropdowns & text inputs (menu bar, quick pick, find widgets) ---
 		"dropdown.foreground": "#FFFFFF",
 		"dropdown.background": "#2F3037",
-		//keybinding
+		"input.background": "#2F3037",
+		"input.foreground": "#ffffff",
+		"input.placeholderForeground": "#ADB5BD",
+
+		// --- Keybinding labels (light chips on dark chrome) ---
 		"keybindingLabel.foreground": "#000000",
 		"keybindingLabel.background": "#ADB5BD",
 		"keybindingLabel.border": "#ADB5BD",
 		"keybindingLabel.bottomBorder": "#8D949B",
-		// Activity bar
+
+		// --- Activity bar & side bar ---
 		"activityBar.background": "#131316",
-		// Sidebar
 		"sideBar.background": "#1C1C21",
 		"sideBar.foreground": "#7D878F",
 		"sideBar.border": "#1C1C21",
 		"sideBar.dropBackground": "#495057",
-		//-- status bar
+
+		// --- Status bar ---
 		"statusBar.background": "#1C1C21",
 		"statusBar.noFolderBackground": "#1C1C21",
 		"statusBarItem.remoteBackground": "#131316",
-		// List
+
+		// --- Lists & trees ---
 		"list.activeSelectionForeground": "#ffffff",
 		"list.activeSelectionBackground": "#18181C",
 		"list.inactiveSelectionBackground": "#ffffff11",
 		"list.hoverForeground": "#ffffff",
 		"list.hoverBackground": "#00000033",
 		"list.focusAndSelectionOutline": "#18181C",
-		// Tab
+
+		// --- Editor group & tabs ---
+		// The active tab carries the side bar grey (#1C1C21) so it reads as
+		// continuous with the editor chrome; inactive tabs drop to #131316.
 		"editorGroupHeader.tabsBackground": "#131316",
+		"editorGroupHeader.noTabsBackground": "#131316",
+		"editorGroupHeader.border": "#131316",
+		"tab.border": "#131316",
+		"tab.lastPinnedBorder": "#2F3037",
 		"tab.activeBackground": "#1C1C21",
 		"tab.activeForeground": "#E9ECEF",
 		"tab.activeBorderTop": "#E9ECEF",
@@ -49,6 +67,7 @@
 		"tab.inactiveForeground": "#768088",
 		"tab.hoverBackground": "#000000",
 		"tab.hoverForeground": "#FFFFFF",
+		// -- unfocused group: same layout, one step dimmer
 		"tab.unfocusedActiveBackground": "#1C1C21",
 		"tab.unfocusedActiveForeground": "#ADB5BD",
 		"tab.unfocusedActiveBorderTop": "#495057",
@@ -56,43 +75,44 @@
 		"tab.unfocusedInactiveForeground": "#636D76",
 		"tab.unfocusedHoverBackground": "#000000",
 		"tab.unfocusedHoverForeground": "#ADB5BD",
-		"tab.border": "#131316",
-		"tab.lastPinnedBorder": "#2F3037",
+		// -- dirty/modified indicators
 		"tab.activeModifiedBorder": "#62929e",
 		"tab.inactiveModifiedBorder": "#495057",
 		"tab.unfocusedActiveModifiedBorder": "#495057",
 		"tab.unfocusedInactiveModifiedBorder": "#2F3037",
-		"editorGroupHeader.noTabsBackground": "#131316",
-		"editorGroupHeader.border": "#131316",
-		// Editor
+
+		// --- Editor surface (light) ---
 		"editor.background": "#F5F5F5",
 		"editor.foreground": "#495057",
+		"editorGroup.emptyBackground": "#18181C",
 		"editorWidget.background": "#DEE2E6",
 		"editorWidget.foreground": "#575E65",
-		"editorGroup.emptyBackground": "#18181C",
+		"peekViewEditor.background": "#ffffff",
+		"editorLineNumber.foreground": "#687078",
+		"editorLineNumber.activeForeground": "#000000",
 		"editor.lineHighlightBorder": "#CED4DA",
 		"editor.lineHighlightBackground": "#CED4DA55",
 		"editor.selectionBackground": "#b7e4c7",
 		"editor.wordHighlightStrongBackground": "#6C757D50",
 		"editor.wordHighlightBackground": "#11111111",
-		"editorLineNumber.foreground": "#687078",
-		"editorLineNumber.activeForeground": "#000000",
+		"editorIndentGuide.background1": "#99999922",
+		"editorIndentGuide.activeBackground1": "#00000033",
+		"editorCursor.foreground": "#8FC9A8",
+		"editorLink.activeForeground": "#376C75",
+		"editorInfo.foreground": "#476972",
+		// -- find & replace (teal family, kept legible over the light surface)
 		"editor.findMatchBackground": "#75D9E399",
 		"editor.findMatchBorder": "#065a60",
 		"editor.findMatchHighlightBackground": "#B2E3E999",
 		"editorOverviewRuler.findMatchForeground": "#15707A99",
-		"editorIndentGuide.background1": "#99999922",
-		"editorIndentGuide.activeBackground1": "#00000033",
-		"peekViewEditor.background": "#ffffff",
-		"editorLink.activeForeground": "#376C75",
-		"editorCursor.foreground": "#8FC9A8",
-		// -- sticky scroll
+		// -- sticky scroll (flush with the editor, separated only by a hairline)
 		"editorStickyScroll.background": "#F5F5F5",
 		"editorStickyScrollGutter.background": "#F5F5F5",
 		"editorStickyScrollHover.background": "#DEE2E6",
 		"editorStickyScroll.border": "#CED4DA",
 		"editorStickyScroll.shadow": "#00000022",
-		// -- bracket
+		// -- bracket pair colorization: a black-to-grey ramp by nesting depth,
+		//    level 6 breaks to orange and unexpected brackets to red
 		"editorBracketHighlight.foreground1": "#000000",
 		"editorBracketHighlight.foreground2": "#2A2A2A",
 		"editorBracketHighlight.foreground3": "#474747",
@@ -102,56 +122,59 @@
 		"editorBracketHighlight.unexpectedBracket.foreground": "#D50000",
 		"editorBracketMatch.background": "#00000000",
 		"editorBracketMatch.border": "#62929e",
-		// Panel
+
+		// --- Panel & terminal ---
 		"panel.background": "#1C1C21",
 		"panel.border": "#131316",
 		"panelSectionHeader.background": "#2F3037",
 		"panelTitle.activeForeground": "#ADB5BD",
 		"panelTitle.inactiveForeground": "#7D878F",
-		// terminal
 		"terminal.background": "#131316",
-		// Settings
+
+		// --- Settings editor (light controls on dark chrome) ---
+		"settings.headerForeground": "#000000",
 		"settings.dropdownBackground": "#ADB5BD",
+		"settings.dropdownForeground": "#000000",
 		"settings.textInputBackground": "#ADB5BD",
+		"settings.textInputForeground": "#000000",
 		"settings.numberInputBackground": "#ADB5BD",
 		"settings.numberInputForeground": "#000000",
-		"settings.headerForeground": "#000000",
-		"settings.textInputForeground": "#000000",
-		"settings.dropdownForeground": "#000000",
 		"settings.modifiedItemIndicator": "#161a1d",
 		"settings.rowHoverBackground": "#00225511",
 		"settings.focusedRowBackground": "#DEE2E6",
 		"settings.focusedRowBorder": "#DEE2E6",
-		"input.background": "#2F3037",
-		"input.foreground": "#ffffff",
-		"input.placeholderForeground": "#ADB5BD",
-		//-- notifications
+
+		// --- Notifications ---
 		"notifications.background": "#1C1C21",
-		"notificationCenterHeader.background": "#131316",
 		"notifications.foreground": "#6C8A99",
-		//-- button
+		"notificationCenterHeader.background": "#131316",
+
+		// --- Buttons ---
 		"button.background": "#536b78",
 		"button.secondaryBackground": "#1C1C21",
-		//-- text link
+
+		// --- Links ---
 		"textLink.foreground": "#62929e",
 		"textLink.activeForeground": "#58a4b0",
-		"editorInfo.foreground": "#476972",
-		//-- git
+
+		// --- Source control (git / GitLens) ---
 		"gitDecoration.modifiedResourceForeground": "#62929e",
 		"gitDecoration.ignoredResourceForeground": "#68737D",
 		"gitlens.trailingLineForegroundColor": "#5F6B76",
-		// -- github Copilot
-		//-- Dart
+
+		// --- Language extensions ---
 		"dart.closingLabels": "#6C7163"
 	},
+	// ===========================================================================
+	// SYNTAX
+	// Order matters: for equally specific selectors the LAST rule wins, so broad
+	// rules come first and narrow/language-specific overrides come after. Rules
+	// marked "keep after X" below are load-bearing - moving them changes colors.
+	// ===========================================================================
 	"tokenColors": [
-		{
-			"name": "Text",
-			"scope": "comment.unused.elixir",
-			"settings": {
-				"foreground": "#A8AEB6"
-			}
-		},
+		// ---------------------------------------------------------------------
+		// Comments & documentation
+		// ---------------------------------------------------------------------
 		{
 			"name": "All Comments (Faded, Italic)",
 			"scope": [
@@ -159,38 +182,37 @@
 				"punctuation.definition.comment",
 				"comment.block.documentation punctuation.definition",
 				"string.comment",
-				"comment.block.documentation",
-				"comment.block",
-				"dart.closingLabels",
-				"comment.unused.elixir"
+				"dart.closingLabels"
 			],
 			"settings": {
 				"foreground": "#A8AEB6",
 				"fontStyle": "italic"
 			}
 		},
-		
 		{
-			"name": "Types",
+			"name": "Doc Comment Keywords (@param, @return, jsdoc/phpdoc types)",
 			"scope": [
-				"entity.name.type",
-				"support.type",
-				"storage.type",
+				"comment.block.documentation variable",
+				"keyword.other.documentation",
+				"storage.type.class.jsdoc",
+				"comment.block variable.parameter",
+				"keyword.other.phpdoc",
+				"comment.block.documentation entity.name.type",
+				"meta.other.type.phpdoc support class"
 			],
 			"settings": {
-				"foreground": "#586370",
+				"foreground": "#9BA1A9"
 			}
 		},
+
+		// ---------------------------------------------------------------------
+		// Font-style sweeps (no color of their own - they only set italics)
+		// ---------------------------------------------------------------------
 		{
 			"name": "Italic",
 			"scope": [
 				"markup.italic",
 				"punctuation.definition.italic",
-				"comment",
-				"punctuation.definition.comment",
-				"string.comment",
-				"comment.block.documentation",
-				"comment.block",
 				"keyword",
 				"keyword.operator.type.asserts",
 				"keyword.operator.expression",
@@ -217,80 +239,17 @@
 				"support.type.property-name",
 				"keyword.other.special-method",
 				"entity.name.tag",
-				"entity.name.type.ts",
+				"entity.name.type.ts"
 			],
 			"settings": {
 				"fontStyle": ""
 			}
 		},
-		{
-			"name": "Doc Comment Keywords",
-			"scope": [
-				"comment.block.documentation variable",
-				"keyword.other.documentation",
-				"storage.type.class.jsdoc",
-				"comment.block variable.parameter",
-				"keyword.other.phpdoc",
-				"comment.block.documentation entity.name.type",
-				"meta.other.type.phpdoc support class"
-			],
-			"settings": {
-				"foreground": "#9BA1A9"
-			}
-		},
-		{
-			"name": "Punctuation",
-			"scope": [
-				"punctuation.comma",
-				"punctuation.comma.graphql",
-				"punctuation.definition.variable",
-				"punctuation.definition.parameters",
-				"punctuation.definition.array",
-				"punctuation.definition.function",
-				"punctuation.brace",
-				"punctuation.terminator.statement",
-				"punctuation.delimiter.object.comma",
-				"punctuation.definition.entity",
-				"punctuation.definition",
-				"punctuation.definition.string.begin.markdown",
-				"punctuation.definition.string.end.markdown",
-				"punctuation.separator.key-value",
-				"punctuation.separator.dictionary",
-				"punctuation.terminator",
-				"punctuation.delimiter.comma",
-				"punctuation.separator.comma",
-				"punctuation.accessor",
-				"punctuation.separator.array",
-				"punctuation.section",
-				"punctuation.section.property-list.begin.bracket.curly",
-				"punctuation.section.property-list.end.bracket.curly",
-				"punctuation.separator.statement",
-				"punctuation.separator.parameter",
-				"punctuation.section.array.elixir",
-				"punctuation.separator.object.elixir",
-				"punctuation.section.embedded.elixir",
-				"punctuation.section.function.elixir",
-				"punctuation.section.scope.elixir",
-				"punctuation.section.embedded",
-				"meta.brace.round",
-				"meta.brace.square",
-				"meta.brace.curly",
-				"constant.name.attribute.tag.pug",
-				"punctuation.section.embedded",
-				"punctuation.separator.method",
-				"punctuation.separator",
-				"punctuation.other.comma",
-				"punctuation.bracket",
-				"keyword.control.ternary",
-				"string.interpolated.pug",
-				"support.function.interpolation.sass",
-				"punctuation.operation.graphql",
-				"punctuation.colon.graphql",
-			],
-			"settings": {
-				"foreground": "#111111"
-			}
-		},
+
+		// ---------------------------------------------------------------------
+		// Punctuation & operators
+		// Punctuation recedes (grey), operators step forward (near-black).
+		// ---------------------------------------------------------------------
 		{
 			"name": "Punctuation (Light Gray)",
 			"scope": [
@@ -327,27 +286,45 @@
 				"punctuation.section.function.elixir",
 				"punctuation.section.scope.elixir",
 				"punctuation.section.embedded",
+				"punctuation.parenthesis.begin",
+				"punctuation.parenthesis.end",
+				"punctuation.separator.method",
+				"punctuation.other.comma",
+				"punctuation.operation.graphql",
+				"punctuation.colon.graphql",
 				"meta.brace.round",
 				"meta.brace.square",
 				"meta.brace.curly",
 				"constant.name.attribute.tag.pug",
-				"punctuation.section.embedded",
-				"punctuation.separator.method",
-				"punctuation.separator",
-				"punctuation.other.comma",
-				"punctuation.bracket",
 				"keyword.control.ternary",
 				"string.interpolated.pug",
 				"support.function.interpolation.sass",
-				"punctuation.parenthesis.begin",
-				"punctuation.parenthesis.end",
-				"punctuation.operation.graphql",
-				"punctuation.colon.graphql",
 				"keyword.operator.namespace.rust",
 				"keyword.operator.access.dot"
 			],
 			"settings": {
 				"foreground": "#6B6F77"
+			}
+		},
+		{
+			// Last survivor of an earlier high-contrast punctuation pass: commas
+			// stay near-black while every other separator sits at #6B6F77.
+			"name": "Punctuation: Comma (High Contrast)",
+			"scope": [
+				"punctuation.comma"
+			],
+			"settings": {
+				"foreground": "#111111"
+			}
+		},
+		{
+			"name": "Angle Brackets (Java type parameters)",
+			"scope": [
+				"punctuation.definition.typeparameters.begin.java",
+				"punctuation.definition.typeparameters.end.java"
+			],
+			"settings": {
+				"foreground": "#161a1d"
 			}
 		},
 		{
@@ -361,13 +338,46 @@
 			}
 		},
 		{
-			"name": "Variables",
+			"name": "New Operator",
+			"scope": "keyword.operator.new",
+			"settings": {
+				"foreground": "#476972"
+			}
+		},
+
+		// ---------------------------------------------------------------------
+		// Types, storage & declaration keywords
+		// ---------------------------------------------------------------------
+		{
+			"name": "Types",
 			"scope": [
-				"variable",
-				"variable.other",
+				"entity.name.type",
+				"support.type",
+				"storage.type"
 			],
 			"settings": {
-				"foreground": "#5A5F66"
+				"foreground": "#586370"
+			}
+		},
+		{
+			"name": "Type Primitive",
+			"scope": [
+				"support.type.primitive",
+				"support.type.builtin"
+			],
+			"settings": {
+				"foreground": "#44656d"
+			}
+		},
+		{
+			// `constant.language` is re-colored by "Constants" further down.
+			"name": "Storage",
+			"scope": [
+				"storage",
+				"constant.language"
+			],
+			"settings": {
+				"foreground": "#556483"
 			}
 		},
 		{
@@ -399,13 +409,14 @@
 			}
 		},
 		{
-			"name": "Angle Brackets",
+			"name": "Function keywords",
 			"scope": [
-				"punctuation.definition.typeparameters.begin.java",
-				"punctuation.definition.typeparameters.end.java"
+				"storage.type.function",
+				"keyword.other.fn"
 			],
 			"settings": {
-				"foreground": "#161a1d"
+				"foreground": "#5A6876",
+				"fontStyle": "italic"
 			}
 		},
 		{
@@ -419,37 +430,35 @@
 			}
 		},
 		{
-			"name": "Variables",
+			"name": "Import Keyword",
 			"scope": [
-				"variable",
-				"source.elixir.embedded.source",
-				"string source.groovy",
-				"string.meta.embedded.line.ruby",
-				"meta.function-call.java"
+				"keyword.control.import",
+				"keyword.other.import",
+				"meta.import keyword"
 			],
 			"settings": {
-				"foreground": "#5A5F66"
+				"foreground": "#6B6F77",
+				"fontStyle": "italic"
 			}
 		},
 		{
-			"name": "Functions",
+			"name": "Import Package Name",
 			"scope": [
-				"entity.name.function",
-				"entity.name.function",
-				"meta.function-call entity.name.function",
-				"meta.function-call",
-				"meta.function.declaration entity.name.function",
-				"meta.method-call entity.name.function",
-				"meta.method-call",
-				"meta.method.declaration entity.name.function",
-				"meta.require",
-				"support.function.any-method",
-				"variable.function",
+				"entity.name.namespace.import.java",
+				"entity.name.namespace.import.python",
+				"entity.name.namespace.import.ts",
+				"entity.name.namespace.import.js",
+				"entity.name.namespace.import"
 			],
 			"settings": {
-				"foreground": "#2B3A4B",
+				"foreground": "#4F6D83",
+				"fontStyle": "italic"
 			}
 		},
+
+		// ---------------------------------------------------------------------
+		// Declarations: classes, functions, methods
+		// ---------------------------------------------------------------------
 		{
 			"name": "Classes",
 			"scope": [
@@ -458,7 +467,6 @@
 				"entity.name.class",
 				"entity.name.type.class",
 				"entity.name.type.enum",
-				"entity.name.class",
 				"entity.name.type.interface",
 				"entity.other.inherited-class",
 				"variable.other.constant.elixir",
@@ -468,7 +476,35 @@
 				"support.type.enum.graphql"
 			],
 			"settings": {
-				"foreground": "#181C22",
+				"foreground": "#181C22"
+			}
+		},
+		{
+			"name": "Functions",
+			"scope": [
+				"entity.name.function",
+				"meta.function-call entity.name.function",
+				"meta.function-call",
+				"meta.function.declaration entity.name.function",
+				"meta.method-call entity.name.function",
+				"meta.method-call",
+				"meta.method.declaration entity.name.function",
+				"meta.require",
+				"support.function.any-method",
+				"variable.function"
+			],
+			"settings": {
+				"foreground": "#2B3A4B"
+			}
+		},
+		{
+			"name": "Macro Functions (Dark Green)",
+			"scope": [
+				"entity.name.function.macro",
+				"support.function.macro"
+			],
+			"settings": {
+				"foreground": "#065a60"
 			}
 		},
 		{
@@ -479,22 +515,123 @@
 			}
 		},
 		{
-			"name": "Storage",
-			"scope": [
-				"storage",
-				"constant.language"
-			],
-			"settings": {
-				"foreground": "#556483"
-			}
-		},
-		{
 			"name": "Support",
 			"scope": "support.function",
 			"settings": {
 				"foreground": "#161a1d"
 			}
 		},
+
+		// ---------------------------------------------------------------------
+		// Variables, properties & parameters
+		// "Object Properties" must stay BEFORE "Variables": both claim
+		// `variable.other.property`, and the later rule wins it (#5A5F66).
+		// ---------------------------------------------------------------------
+		{
+			"name": "Object Properties",
+			"scope": [
+				"meta.object-literal.key",
+				"meta.object.member",
+				"variable.other.property",
+				"variable.other.object.property",
+				"support.variable.property",
+				"variable.object.property",
+				"support.type.property-name",
+				"meta.property-name",
+				"entity.name.tag.yaml",
+				"constant.other.key",
+				"constant.other.object.key.js",
+				"string.unquoted.label.js",
+				"support.type.map.key",
+				"variable.graphql"
+			],
+			"settings": {
+				"foreground": "#505050"
+			}
+		},
+		{
+			"name": "Variables",
+			"scope": [
+				"variable",
+				"variable.other",
+				"variable.other.readwrite",
+				"variable.other.assignment",
+				"variable.other.local",
+				"variable.other.member",
+				"variable.other.property",
+				"source.elixir.embedded.source",
+				"string source.groovy",
+				"string.meta.embedded.line.ruby",
+				"meta.function-call.java"
+			],
+			"settings": {
+				"foreground": "#5A5F66"
+			}
+		},
+		{
+			"name": "Variable Parameter",
+			"scope": [
+				"variable.parameter",
+				"parameter.variable.function.elixir",
+				"variable.other.block.ruby"
+			],
+			"settings": {
+				"foreground": "#5c4d3c"
+			}
+		},
+		{
+			// Same color as above, plus bold - kept separate so the Elixir/Ruby
+			// scopes in "Variable Parameter" stay non-bold.
+			"name": "Parameter Names",
+			"scope": [
+				"variable.parameter",
+				"meta.function.parameters variable"
+			],
+			"settings": {
+				"foreground": "#5c4d3c",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Function Parameters",
+			"scope": "meta.function-call.arguments",
+			"settings": {
+				"foreground": "#5E6471"
+			}
+		},
+		{
+			"name": "Parameter Types",
+			"scope": [
+				"entity.name.type.parameter",
+				"meta.type.parameters",
+				"keyword.operator.dereference"
+			],
+			"settings": {
+				"foreground": "#476972",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "This/Self Keyword",
+			"scope": [
+				"variable.language.this",
+				"variable.language.self"
+			],
+			"settings": {
+				"fontStyle": "bold italic"
+			}
+		},
+		{
+			"name": "Embedded",
+			"scope": "variable.interpolation",
+			"settings": {
+				"foreground": "#476972"
+			}
+		},
+
+		// ---------------------------------------------------------------------
+		// Literals: strings, numbers, constants
+		// ---------------------------------------------------------------------
 		{
 			"name": "Strings, Inherited Class",
 			"scope": [
@@ -511,6 +648,7 @@
 			}
 		},
 		{
+			// `constant.numeric` is re-colored by "Constants" just below.
 			"name": "Integers",
 			"scope": [
 				"constant.numeric",
@@ -518,20 +656,6 @@
 			],
 			"settings": {
 				"foreground": "#586370"
-			}
-		},
-		{
-			"name": "Floats",
-			"scope": "none",
-			"settings": {
-				"foreground": "#404E7C"
-			}
-		},
-		{
-			"name": "Boolean",
-			"scope": "none",
-			"settings": {
-				"foreground": "#5A6876"
 			}
 		},
 		{
@@ -553,6 +677,56 @@
 			}
 		},
 		{
+			// Keep BEFORE "Null"/"Undefined": they refine the same scopes'
+			// font style and only win because they come later.
+			"name": "Dangerous/Unique Types (Null, Undefined, RegExp)",
+			"scope": [
+				"constant.language.null",
+				"constant.language.undefined",
+				"string.regexp",
+				"constant.language.nan",
+				"constant.language.infinity",
+				"keyword.operator.borrow",
+				"keyword.operator.optional"
+			],
+			"settings": {
+				"foreground": "#912d2d",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Null",
+			"scope": [
+				"constant.language.null"
+			],
+			"settings": {
+				"fontStyle": "bold italic"
+			}
+		},
+		{
+			"name": "Undefined",
+			"scope": [
+				"constant.language.undefined"
+			],
+			"settings": {
+				"fontStyle": "bold underline"
+			}
+		},
+		{
+			"name": "Escape Characters",
+			"scope": [
+				"constant.character.escape",
+				"constant.other.character-class"
+			],
+			"settings": {
+				"foreground": "#AD4D16"
+			}
+		},
+
+		// ---------------------------------------------------------------------
+		// Markup: tags, attributes & CSS selectors
+		// ---------------------------------------------------------------------
+		{
 			"name": "Tags",
 			"scope": [
 				"entity.name.tag",
@@ -573,6 +747,13 @@
 			}
 		},
 		{
+			"name": "Css ID",
+			"scope": "entity.other.attribute-name.id",
+			"settings": {
+				"foreground": "#4D677F"
+			}
+		},
+		{
 			"name": "Selector",
 			"scope": "meta.selector",
 			"settings": {
@@ -580,12 +761,16 @@
 			}
 		},
 		{
-			"name": "Values",
-			"scope": "none",
+			"name": "Units",
+			"scope": "keyword.other.unit",
 			"settings": {
-				"foreground": "#404E7C"
+				"foreground": "#20424A" // dark bluey green, low saturation
 			}
 		},
+
+		// ---------------------------------------------------------------------
+		// Markdown & prose
+		// ---------------------------------------------------------------------
 		{
 			"name": "Headings",
 			"scope": [
@@ -596,13 +781,6 @@
 			],
 			"settings": {
 				"fontStyle": "",
-				"foreground": "#20424A" // dark bluey green, low saturation
-			}
-		},
-		{
-			"name": "Units",
-			"scope": "keyword.other.unit",
-			"settings": {
 				"foreground": "#20424A" // dark bluey green, low saturation
 			}
 		},
@@ -658,10 +836,44 @@
 			}
 		},
 		{
+			"name": "Quotes",
+			"scope": "markup.quote",
+			"settings": {
+				"foreground": "#6a3a00"
+			}
+		},
+		{
+			"name": "Lists",
+			"scope": "beginning.punctuation.definition.list",
+			"settings": {
+				"foreground": "#065a60"
+			}
+		},
+		{
+			"name": "Separator",
+			"scope": "meta.separator",
+			"settings": {
+				"foreground": "#595959"
+			}
+		},
+		{
+			// Legacy scope spelling (`raw.inline`); the grammars in use today
+			// emit `markup.inline.raw`, handled by "Markup Code" below.
 			"name": "Code",
 			"scope": "markup.raw.inline",
 			"settings": {
 				"foreground": "#2f2504"
+			}
+		},
+		{
+			"name": "Markup Code",
+			"scope": [
+				"markup.inline.raw",
+				"markup.fenced_code.block",
+				"markup.raw.block"
+			],
+			"settings": {
+				"foreground": "#065a60"
 			}
 		},
 		{
@@ -673,32 +885,16 @@
 		},
 		{
 			"name": "Link Url",
-			"scope": [
-				"meta.link",
-			],
+			"scope": "meta.link",
 			"settings": {
 				"foreground": "#476972"
 			}
 		},
 		{
-			"name": "Lists",
-			"scope": "beginning.punctuation.definition.list",
+			"name": "Markup Link Image",
+			"scope": "markup.underline.link.image",
 			"settings": {
-				"foreground": "#065a60"
-			}
-		},
-		{
-			"name": "Quotes",
-			"scope": "markup.quote",
-			"settings": {
-				"foreground": "#6a3a00"
-			}
-		},
-		{
-			"name": "Separator",
-			"scope": "meta.separator",
-			"settings": {
-				"foreground": "#595959"
+				"foreground": "#4F6A5F"
 			}
 		},
 		{
@@ -723,118 +919,16 @@
 			}
 		},
 		{
-			"name": "Regular Expressions",
-			"scope": "string.regexp",
-			"settings": {
-				"foreground": "#065a60"
-			}
-		},
-		{
-			"name": "Escape Characters",
-			"scope": [
-				"constant.character.escape",
-				"constant.other.character-class"
-			],
-			"settings": {
-				"foreground": "#AD4D16"
-			}
-		},
-		{
-			"name": "Embedded",
-			"scope": "variable.interpolation",
-			"settings": {
-				"foreground": "#476972"
-			}
-		},
-		{
 			"name": "Illegal",
 			"scope": "invalid",
 			"settings": {
 				"foreground": "#D50000"
 			}
 		},
-		{
-			"name": "New Operator",
-			"scope": "keyword.operator.new",
-			"settings": {
-				"foreground": "#476972"
-			}
-		},
-		{
-			"name": "Css ID",
-			"scope": "entity.other.attribute-name.id",
-			"settings": {
-				"foreground": "#4D677F"
-			}
-		},
-		{
-			"name": "Function Parameters",
-			"scope": "meta.function-call.arguments",
-			"settings": {
-				"foreground": "#5E6471"
-			}
-		},
-		{
-			"name": "Object Properties",
-			"scope": [
-				"meta.object-literal.key",
-				"meta.object.member",
-				"variable.other.property",
-				"variable.other.object.property",
-				"support.variable.property",
-				"variable.object.property",
-				"support.type.property-name",
-				"meta.property-name",
-				"entity.name.tag.yaml",
-				"constant.other.key",
-				"constant.other.object.key.js",
-				"string.unquoted.label.js",
-				"support.type.map.key",
-				"variable.graphql"
-			],
-			"settings": {
-				"foreground": "#505050"
-			}
-		},
-		{
-			"name": "Markup Code",
-			"scope": [
-				"markup.inline.raw",
-				"markup.fenced_code.block",
-				"markup.raw.block"
-			],
-			"settings": {
-				"foreground": "#065a60"
-			}
-		},
-		{
-			"name": "Markup Link Image",
-			"scope": "markup.underline.link.image",
-			"settings": {
-				"foreground": "#4F6A5F"
-			}
-		},
-		{
-			"name": "Variable Parameter",
-			"scope": [
-				"variable.parameter",
-				"parameter.variable.function.elixir",
-				"variable.other.block.ruby"
-			],
-			"settings": {
-				"foreground": "#5c4d3c"
-			}
-		},
-		{
-			"name": "Type Primitive",
-			"scope": [
-				"support.type.primitive",
-				"support.type.builtin"
-			],
-			"settings": {
-				"foreground": "#44656d"
-			}
-		},
+
+		// ---------------------------------------------------------------------
+		// Shell / Bash
+		// ---------------------------------------------------------------------
 		{
 			"name": "BASH: Command Substitution",
 			"scope": "string.interpolated.dollar.shell",
@@ -859,135 +953,15 @@
 				"foreground": "#616166"
 			}
 		},
-		{
-			"name": "Import Keyword",
-			"scope": [
-				"keyword.control.import",
-				"keyword.other.import",
-				"meta.import keyword"
-			],
-			"settings": {
-				"foreground": "#6B6F77",
-				"fontStyle": "italic"
-			}
-		},
-		{
-			"name": "Import Package Name",
-			"scope": [
-				"entity.name.namespace.import.java",
-				"entity.name.namespace.import.python",
-				"entity.name.namespace.import.ts",
-				"entity.name.namespace.import.js",
-				"entity.name.namespace.import"
-			],
-			"settings": {
-				"foreground": "#4F6D83",
-				"fontStyle": "italic"
-			}
-		},
-		{
-			"name": "Variables",
-			"scope": [
-				"variable",
-				"variable.other",
-				"variable.other.readwrite",
-				"variable.other.assignment",
-				"variable.other.local",
-				"variable.other.member",
-				"variable.other.property",
-			],
-			"settings": {
-				"foreground": "#5A5F66",
-			}
-		},
-		{
-			"name": "Dangerous/Unique Types (Null, Undefined, RegExp)",
-			"scope": [
-				"constant.language.null",
-				"constant.language.undefined",
-				"string.regexp",
-				"constant.language.nan",
-				"constant.language.infinity",
-				"keyword.operator.borrow",
-				"keyword.operator.optional"
-			],
-			"settings": {
-				"foreground": "#912d2d",
-				"fontStyle": "bold"
-			}
-		},
-		{
-			"name": "Null",
-			"scope": [
-				"constant.language.null",
-			],
-			"settings": {
-				"fontStyle": "bold italic"
-			}
-		},
-		{
-			"name": "Undefined",
-			"scope": [
-				"constant.language.undefined",
-			],
-			"settings": {
-				"fontStyle": "bold underline"
-			}
-		},
-		{
-			"name": "This/Self Keyword",
-			"scope": [
-				"variable.language.this",
-				"variable.language.self"
-			],
-			"settings": {
-				"fontStyle": "bold italic"
-			}
-		},
-		{
-			"name": "Parameter Names",
-			"scope": [
-				"variable.parameter",
-				"meta.function.parameters variable"
-			],
-			"settings": {
-				"foreground": "#5c4d3c",
-				"fontStyle": "bold"
-			}
-		},
-		{
-			"name": "Parameter Types",
-			"scope": [
-				"entity.name.type.parameter",
-				"meta.type.parameters",
-				"keyword.operator.dereference",
-			],
-			"settings": {
-				"foreground": "#476972",
-				"fontStyle": "italic"
-			}
-		},
-		{
-			"name": "Macro Functions (Dark Green)",
-			"scope": [
-				"entity.name.function.macro",
-				"support.function.macro"
-			],
-			"settings": {
-				"foreground": "#065a60"
-			}
-		},
-		{
-			"name": "Function keywords",
-			"scope": [
-				"storage.type.function",
-				"keyword.other.fn"
-			],
-			"settings": {
-				"foreground": "#5A6876",
-				"fontStyle": "italic"
-			}
-		},
+
+		// ---------------------------------------------------------------------
+		// Infrastructure & config languages
+		// Shared vocabulary across Terraform / YAML / TOML / Dockerfile:
+		//   #14663F bold  declarations (block types, anchors, [sections])
+		//   #9D4F18 bold  indirection sigils (${ }, & * <<)
+		//   #6a3a00 bold  heredoc delimiters
+		//   #556483 bold  reserved instructions (Dockerfile)
+		// ---------------------------------------------------------------------
 		{
 			"name": "Terraform: block type keywords (resource, data, module, output...)",
 			"scope": [
@@ -1030,6 +1004,19 @@
 			"settings": {
 				"foreground": "#9D4F18",
 				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Terraform: live code inside ${ } reads as code, not as text",
+			"scope": [
+				"meta.interpolation.hcl variable.other.readwrite.terraform",
+				"meta.interpolation.hcl variable.other.readwrite.hcl",
+				"meta.interpolation.hcl variable.other.member.hcl",
+				"meta.interpolation.hcl support.function.builtin.terraform"
+			],
+			"settings": {
+				"foreground": "#2F3A45",
+				"fontStyle": ""
 			}
 		},
 		{
@@ -1100,21 +1087,11 @@
 				"foreground": "#556483",
 				"fontStyle": "bold"
 			}
-		},
-		{
-			"name": "Terraform: live code inside ${ } reads as code, not as text",
-			"scope": [
-				"meta.interpolation.hcl variable.other.readwrite.terraform",
-				"meta.interpolation.hcl variable.other.readwrite.hcl",
-				"meta.interpolation.hcl variable.other.member.hcl",
-				"meta.interpolation.hcl support.function.builtin.terraform"
-			],
-			"settings": {
-				"foreground": "#2F3A45",
-				"fontStyle": ""
-			}
-		},
+		}
 	],
+	// ===========================================================================
+	// SEMANTIC TOKENS
+	// ===========================================================================
 	"semanticTokenColors": {
 		"operator": "#616166",
 		"memberOperatorOverload": "#616166",
