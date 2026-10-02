@@ -60,7 +60,7 @@ Term
 
 ## Extras
 
-Image: ![screenshot](../../docs/java.png)
+Image: ![screenshot](../../docs/images/java.png)
 
 Autolink: <https://example.com>
 
