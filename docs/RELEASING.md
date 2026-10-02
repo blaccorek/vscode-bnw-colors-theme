@@ -1,9 +1,10 @@
 # Releasing
 
 Publishing is automated by [`.github/workflows/release.yml`](../.github/workflows/release.yml).
-The **git tag is the source of truth** for the published version: the workflow writes
-that version into `package.json` before packaging, so a tag can never publish a
-mismatched version.
+The **`version` field in `package.json` is the source of truth** for the published
+version: `npm version` bumps it and creates the matching tag, and the workflow only
+reads it. On a tag push the workflow checks that the tag equals `v<version>` and
+fails on a mismatch, so a tag can never publish a different version.
 
 ## One-time setup
 
@@ -22,15 +23,13 @@ and update the secret.
 
 1. Add a `## [x.y.z]` section to [`CHANGELOG.md`](../CHANGELOG.md) describing the changes.
    Those bullets become the GitHub release notes.
-2. Commit, then tag and push:
+2. Commit the changelog, then cut the release with `npm version`, which bumps
+   `package.json`, commits that bump and creates the `v0.0.10` tag:
 
    ```sh
-   git tag v0.0.10
+   npm version patch   # or minor / major / 0.0.10
    git push origin main --follow-tags
    ```
-
-Bumping `version` in `package.json` is optional — the workflow sets it from the tag —
-but keeping it in sync avoids confusion when packaging locally.
 
 The workflow then:
 
@@ -42,9 +41,10 @@ The workflow then:
 
 ## Re-running a failed publish
 
-Use **Actions > Release > Run workflow** and enter the version (for example `0.0.10`).
-It does the same thing without needing a new tag; if the GitHub release already
-exists, only the `.vsix` asset is refreshed.
+Use **Actions > Release > Run workflow** and pick the tag to publish (for example
+`v0.0.10`) as the ref. It publishes the version in that ref's `package.json` without
+needing a new tag; if the GitHub release already exists, only the `.vsix` asset is
+refreshed.
 
 ## Building locally
 
