@@ -48,3 +48,23 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.0.11]
 - Fix sticky scroll lines turning black on hover
+
+## [0.1.0]
+- Raise text contrast so the theme reads on SDR screens, not just HDR ones: every
+  foreground now clears WCAG AA (4.5:1) against its background
+- Darken the faint end of the light editor palette (comments, punctuation, imports,
+  constants, types, tags, strings) while keeping each colour's hue and saturation,
+  so the grayscale look and the token hierarchy are unchanged
+- Lighten the dark chrome text (sidebar, inactive tabs, descriptions, icons,
+  notifications, errors); keep disabled text, unfocused-inactive tabs and
+  gitignored files dim, but visible
+- Fix GitLens blame text and Dart closing labels, which were near-invisible on the
+  light editor background
+- Re-space the bracket pair ramp so level 5 is readable and all six levels stay distinct
+- Set editor line number, editor widget and keybinding label colours explicitly
+  instead of inheriting dark-UI defaults onto light surfaces
+- Soften the cursor to a weak green
+- Move find matches to a weak blue-green on the existing #065a60 teal axis, so they
+  read apart from the green selection by hue instead of competing with it on
+  lightness; the current match carries a teal border and the overview ruler marks
+  match the same teal

@@ -12,8 +12,8 @@ and status bar stay dark and out of the way.
 - **Subtle colors for important stuff** — only what really matters gets a
   touch of color: strings, types, errors and warnings. Just enough to spot
   them at a glance.
-- **Easy on the eyes** — no neon, no rainbow. Low contrast colors that let you
-  read code for hours.
+- **Easy on the eyes** — no neon, no rainbow. Low saturation colors that let you
+  read code for hours, all of them at WCAG AA contrast or better.
 
 ## Install
 
