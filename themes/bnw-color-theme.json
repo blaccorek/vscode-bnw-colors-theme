@@ -149,7 +149,7 @@
 			"name": "Text",
 			"scope": "comment.unused.elixir",
 			"settings": {
-				"foreground": "#595959"
+				"foreground": "#A8AEB6"
 			}
 		},
 		{
@@ -165,7 +165,7 @@
 				"comment.unused.elixir"
 			],
 			"settings": {
-				"foreground": "#6B6F77",
+				"foreground": "#A8AEB6",
 				"fontStyle": "italic"
 			}
 		},
@@ -235,7 +235,7 @@
 				"meta.other.type.phpdoc support class"
 			],
 			"settings": {
-				"foreground": "#66666B"
+				"foreground": "#9BA1A9"
 			}
 		},
 		{

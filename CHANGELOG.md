@@ -68,3 +68,5 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
   read apart from the green selection by hue instead of competing with it on
   lightness; the current match carries a teal border and the overview ruler marks
   match the same teal
+- Fade comments (and doc-comment tags, which stay a step darker) so they recede
+  from active code instead of reading at nearly the same weight
